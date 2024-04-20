@@ -15,6 +15,7 @@ width = 200
 image = np.zeros((height, width), dtype=np.uint8)
 
 # Define the positions and shapes of the two objects
+
 #Object 1
 object1_position = (20, 20)
 object1_shape = (50, 50) 
@@ -29,9 +30,9 @@ cv2.rectangle(image, object1_position, (object1_position[0]+object1_shape[0], ob
 # Second object - Circle
 cv2.circle(image, object2_position, int(object2_shape[0]/2), 255, -1)
 
-# Adding gaussian noise to the image
+# Adding gaussian noise to the generated image
 mean = 0
-std_dev = 25
+std_dev = 45
 noise = np.zeros(image.shape, dtype=np.uint8)
 cv2.randn(noise, mean, std_dev)
 noisy_image = cv2.add(image, noise)
@@ -41,7 +42,15 @@ _, otsu_threshold_image = cv2.threshold(noisy_image, 0, 255, cv2.THRESH_BINARY +
 
 # Show the image
 cv2.imshow("Image", image)
+cv2.imwrite('Results\Generated Image.jpg', image)
+
+#Showing and saving Gaussian noisy added image
 cv2.imshow("Gaussian Noisy Image", noisy_image)
+cv2.imwrite('Results\Gaussian Noisy Image.jpg', noisy_image)
+
+#Showing and saving Otsu Thresholded image
 cv2.imshow("Otsu Thresholded Image", otsu_threshold_image)
+cv2.imwrite('Results\Otsu Thresholded Image.jpg',otsu_threshold_image)
+
 cv2.waitKey(0)
 cv2.destroyAllWindows()
