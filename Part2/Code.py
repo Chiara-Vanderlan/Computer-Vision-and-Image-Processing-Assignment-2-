@@ -36,7 +36,7 @@ def process(image, seeds, threshold):
 if __name__ == "__main__":
 
     # Read the image
-    image = cv2.imread('Part2\dog.jpg', cv2.IMREAD_GRAYSCALE)
+    image = cv2.imread('Part2\hawk.png', cv2.IMREAD_GRAYSCALE)
 
     cv2.imshow('Original Image', image)
 
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     #Define the seed
     seeds_2 = [(50, 50),(100, 100), (250, 250),(150, 150)]
     #Define threhold for region growing
-    threshold_2 = 11
+    threshold_2 = 5
     #Performing the processing funtion
     segmented_image_2 = process(image, seeds_2, threshold_2)
 
